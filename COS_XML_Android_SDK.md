@@ -1,9 +1,9 @@
 ## 开发准备
 
 ### SDK 获取
-对象存储服务的 XML Android SDK 的下载github地址:[XML Android SDK]().
+对象存储服务的 XML Android SDK 的下载github地址:[XML Android SDK](https://github.com/tencentyun/cos_xml_android_sdk/tree/master/Libs).
 
-更多示例可参考Demo:[XML Android SDK Demo]().
+更多示例可参考Demo:[XML Android SDK Demo](https://github.com/tencentyun/cos_xml_android_sdk/tree/master/CosXmlDemo).
 
 ### 开发准备
 
@@ -15,6 +15,20 @@
 ### SDK 配置
 
 配置工程导入下列 jar 包：
+
+- cos-xml-android-sdk-1.0.jar
+
+- qcloud-network-android-sdk-1.0.jar
+ 
+- okhttp-3.8.1.jar
+
+- okio-1.13.0.jar
+ 
+- slf4j-android-1.6.1-RC1.jar
+
+- xstream-1.4.7.jar
+
+- fastjson-1.1.60.android.jar
 
 SDK 需要网络访问相关的一些权限，需要在 AndroidManifest.xml 中增加如下权限声明：
 ```html
