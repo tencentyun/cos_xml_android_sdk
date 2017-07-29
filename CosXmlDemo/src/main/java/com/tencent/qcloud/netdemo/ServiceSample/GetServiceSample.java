@@ -59,7 +59,7 @@ public class GetServiceSample {
     public void startAsync(final Activity activity){
         getServiceRequest = new GetServiceRequest();
         getServiceRequest.setSign(600,null,null);
-        qServiceCfg.cosXmlService.GetServiceAsync(getServiceRequest, new CosXmlResultListener() {
+        qServiceCfg.cosXmlService.getServiceAsync(getServiceRequest, new CosXmlResultListener() {
             @Override
             public void onSuccess(CosXmlRequest cosXmlRequest, CosXmlResult cosXmlResult) {
                 StringBuilder stringBuilder = new StringBuilder();

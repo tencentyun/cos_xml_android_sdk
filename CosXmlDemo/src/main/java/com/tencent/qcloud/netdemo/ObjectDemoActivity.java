@@ -122,8 +122,8 @@ public class ObjectDemoActivity extends AppCompatActivity implements View.OnClic
         if(id == R.id.back){
             finish();
         }else{
-            //start(id);
-            startAsync(id);
+            start(id);
+            //startAsync(id);
         }
     }
 

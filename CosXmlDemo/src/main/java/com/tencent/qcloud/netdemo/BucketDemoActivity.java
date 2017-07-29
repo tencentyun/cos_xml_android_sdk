@@ -129,8 +129,8 @@ public class BucketDemoActivity extends AppCompatActivity implements View.OnClic
         if(id == R.id.back){
             finish();
         }else{
-          //  start(id);
-            startAsync(id);
+           start(id);
+            //startAsync(id);
         }
     }
     public void start(final int id) {

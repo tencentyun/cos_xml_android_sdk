@@ -61,8 +61,8 @@ public class ServiceDemoActivity extends AppCompatActivity implements View.OnCli
                 finish();
                 break;
             case R.id.GetService:
-               // start();
-                startAsync();
+                start();
+                //startAsync();
                 break;
         }
     }
