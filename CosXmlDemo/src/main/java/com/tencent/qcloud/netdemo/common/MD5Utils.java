@@ -18,7 +18,7 @@ import java.security.NoSuchAlgorithmException;
 public class MD5Utils {
     public static String getMD5FromBytes(byte[] data, int offset, int len){
         if(data == null || len <= 0 || offset < 0){
-            Log.e("SHA1Utils","data == null | len <= 0 |" +
+            Log.e("MD5Utils","data == null | len <= 0 |" +
                     " offset < 0 |offset >= len");
             return null;
         }

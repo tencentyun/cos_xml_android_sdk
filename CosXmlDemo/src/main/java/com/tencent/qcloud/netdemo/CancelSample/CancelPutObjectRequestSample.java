@@ -7,7 +7,6 @@ import com.tencent.cos.xml.model.object.PutObjectRequest;
 import com.tencent.cos.xml.model.object.PutObjectResult;
 import com.tencent.cos.xml.sign.CosXmlSignatureSourceSerializer;
 import com.tencent.qcloud.netdemo.common.QServiceCfg;
-import com.tencent.qcloud.netdemo.common.SHA1Utils;
 import com.tencent.qcloud.network.QCloudProgressListener;
 import com.tencent.qcloud.network.exception.QCloudException;
 

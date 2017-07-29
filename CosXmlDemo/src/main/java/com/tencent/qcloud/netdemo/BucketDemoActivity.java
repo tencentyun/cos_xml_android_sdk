@@ -129,7 +129,8 @@ public class BucketDemoActivity extends AppCompatActivity implements View.OnClic
         if(id == R.id.back){
             finish();
         }else{
-            start(id);
+          //  start(id);
+            startAsync(id);
         }
     }
     public void start(final int id) {
@@ -207,10 +208,6 @@ public class BucketDemoActivity extends AppCompatActivity implements View.OnClic
                         ListMultiUploadsSample listMultiUploadsSample = new ListMultiUploadsSample(qServiceCfg);
                         result = listMultiUploadsSample.start();
                         break;
-//                    case R.id.multipartHelper:
-//                        MultipartUploadHelperSample multipartUploadHelperSample = new MultipartUploadHelperSample(qServiceCfg);
-//                        result = multipartUploadHelperSample.start();
-//                        break;
                 }
                 if(result != null){
                     Bundle bundle = new Bundle();
@@ -227,4 +224,78 @@ public class BucketDemoActivity extends AppCompatActivity implements View.OnClic
             }
         }).start();
     }
+
+    private void startAsync(int id) {
+        switch (id) {
+            case R.id.getBucket:
+                GetBucketSample getBucketSample = new GetBucketSample(qServiceCfg);
+                getBucketSample.startAsync(this);
+                break;
+            case R.id.getBucketACL:
+                GetBucketACLSample getBucketACLSample = new GetBucketACLSample(qServiceCfg);
+                getBucketACLSample.startAsync(this);
+                break;
+            case R.id.getBucketCORS:
+                GetBucketCORSSample getBucketCORSSample = new GetBucketCORSSample(qServiceCfg);
+                getBucketCORSSample.startAsync(this);
+                break;
+            case R.id.getBucketLocation:
+                GetBucketLocationSample getBucketLocationSample = new GetBucketLocationSample(qServiceCfg);
+                getBucketLocationSample.startAsync(this);
+                break;
+            case R.id.getBucketLifecycle:
+                GetBucketLifecycleSample getBucketLifecycleSample = new GetBucketLifecycleSample(qServiceCfg);
+                getBucketLifecycleSample.startAsync(this);
+                break;
+            case R.id.getBucketTagging:
+                GetBucketTaggingSample getBucketTaggingSample = new GetBucketTaggingSample(qServiceCfg);
+                getBucketTaggingSample.startAsync(this);
+                break;
+            case R.id.putBucket:
+                PutBucketSample putBucketSample = new PutBucketSample(qServiceCfg);
+                putBucketSample.startAsync(this);
+                break;
+            case R.id.putBucketACL:
+                PutBucketACLSample putBucketACLSample = new PutBucketACLSample(qServiceCfg);
+                putBucketACLSample.startAsync(this);
+                break;
+            case R.id.putBucketCORS:
+                PutBucketCORSSample putBucketCORSSample = new PutBucketCORSSample(qServiceCfg);
+                putBucketCORSSample.startAsync(this);
+                break;
+            case R.id.putBucketLifecycle:
+                PutBucketLifecycleSample putBucketLifecycleSample = new PutBucketLifecycleSample(qServiceCfg);
+                putBucketLifecycleSample.startAsync(this);
+                break;
+            case R.id.putBucketTagging:
+                PutBucketTaggingSample putBucketTaggingSample = new PutBucketTaggingSample(qServiceCfg);
+                putBucketTaggingSample.startAsync(this);
+                break;
+            case R.id.deleteBucket:
+                DeleteBucketSample deleteBucketSample = new DeleteBucketSample(qServiceCfg);
+                deleteBucketSample.startAsync(this);
+                break;
+            case R.id.deleteBucketCORS:
+                DeleteBucketCORSSample deleteBucketCORSSample = new DeleteBucketCORSSample(qServiceCfg);
+                deleteBucketCORSSample.startAsync(this);
+                break;
+            case R.id.deleteBucketLifecycle:
+                DeleteBucketLifecycleSample deleteBucketLifecycleSample = new DeleteBucketLifecycleSample(qServiceCfg);
+                deleteBucketLifecycleSample.startAsync(this);
+                break;
+            case R.id.deleteBucketTagging:
+                DeleteBucketTaggingSample deleteBucketTaggingSample = new DeleteBucketTaggingSample(qServiceCfg);
+                deleteBucketTaggingSample.startAsync(this);
+                break;
+            case R.id.headBucket:
+                HeadBucketSample headBucketSample = new HeadBucketSample(qServiceCfg);
+                headBucketSample.startAsync(this);
+                break;
+            case R.id.ListMultiUploads:
+                ListMultiUploadsSample listMultiUploadsSample = new ListMultiUploadsSample(qServiceCfg);
+                listMultiUploadsSample.startAsync(this);
+                break;
+        }
+    }
+
 }

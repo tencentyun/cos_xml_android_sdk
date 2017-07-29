@@ -7,13 +7,10 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.tencent.cos.xml.model.object.GetObjectResult;
-import com.tencent.cos.xml.model.service.GetServiceResult;
 import com.tencent.qcloud.netdemo.ServiceSample.GetServiceSample;
 import com.tencent.qcloud.netdemo.common.QServiceCfg;
 
@@ -64,7 +61,8 @@ public class ServiceDemoActivity extends AppCompatActivity implements View.OnCli
                 finish();
                 break;
             case R.id.GetService:
-                start();
+               // start();
+                startAsync();
                 break;
         }
     }
@@ -84,4 +82,10 @@ public class ServiceDemoActivity extends AppCompatActivity implements View.OnCli
                 mainHandler.sendMessage(msg);
         }}).start();
     }
+
+    protected void startAsync(){
+        GetServiceSample getServiceSample = new GetServiceSample(qServiceCfg);
+        getServiceSample.startAsync(this);
+    }
+
 }

@@ -6,7 +6,6 @@ import android.util.Log;
 import com.tencent.cos.xml.CosXmlService;
 import com.tencent.cos.xml.CosXmlServiceConfig;
 import com.tencent.cos.xml.sign.CosXmlCredentialProvider;
-import com.tencent.cos.xml.sign.CosXmlLocalCredentialProvider;
 import com.tencent.cos.xml.sign.CosXmlSignaturePair;
 import com.tencent.qcloud.network.exception.QCloudException;
 

@@ -20,16 +20,8 @@ import com.tencent.cos.xml.model.CosXmlRequest;
 import com.tencent.cos.xml.model.CosXmlResult;
 import com.tencent.cos.xml.model.CosXmlResultListener;
 import com.tencent.cos.xml.model.object.PutObjectRequest;
-import com.tencent.cos.xml.model.object.PutObjectResult;
 import com.tencent.qcloud.netdemo.common.QServiceCfg;
 import com.tencent.qcloud.network.QCloudProgressListener;
-import com.tencent.qcloud.network.QCloudRequest;
-import com.tencent.qcloud.network.QCloudResult;
-import com.tencent.qcloud.network.QCloudResultListener;
-import com.tencent.qcloud.network.exception.QCloudException;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Dynamic add permissions
         final int permissionCheck = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
                 + ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -54,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     1);
         }
+
         serviceBtn = (Button)findViewById(R.id.serviceTest);
         objectBtn = (Button)findViewById(R.id.objectTest);
         bucketBtn = (Button)findViewById(R.id.bucketTest);
@@ -82,8 +77,7 @@ public class MainActivity extends AppCompatActivity {
         exitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // android.os.Process.killProcess(Process.myPid());
-                putObjectAync();
+                android.os.Process.killProcess(Process.myPid());
             }
         });
     }
@@ -93,52 +87,4 @@ public class MainActivity extends AppCompatActivity {
         Log.w("XIAO","requestCode =" + requestCode + "; permission =" + permissions[1] + "; grantResult =" + grantResults[0]);
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
-
-
-    public void putObjectAync(){
-        QServiceCfg qServiceCfg = new QServiceCfg(this);
-        PutObjectRequest putObjectRequest;
-        putObjectRequest = new PutObjectRequest();
-        putObjectRequest.setBucket(qServiceCfg.bucket);
-        String cosPath = "/gradle for android.pdf";
-        putObjectRequest.setCosPath(cosPath);
-        putObjectRequest.setSrcPath(Environment.getExternalStorageDirectory().getPath() + "/gradle for android.pdf");
-        //putObjectRequest.setXCOSContentSha1(SHA1Utils.getSHA1FromPath(Environment.getExternalStorageDirectory().getPath() + "/test1.jpg"));
-
-        putObjectRequest.setProgressListener(new QCloudProgressListener() {
-            @Override
-            public void onProgress(long progress, long max) {
-                float result = (float) (progress * 100.0/max);
-                Log.w("XIAO","progress =" + (long)result + "%"  + " ------------" + progress + "/" + max);
-            }
-        });
-        putObjectRequest.setSign(600,null,null);
-
-        putObjectRequest.setXCOSACL("public-read");
-
-        List<String> readIdList = new ArrayList<>();
-        readIdList.add("uin/2779643970:uin/2779643970");
-        readIdList.add("uin/2779643970:uin/151453739");
-        putObjectRequest.setXCOSGrantReadWithUIN(readIdList);
-
-        List<String> writeIdList = new ArrayList<>();
-        writeIdList.add("uin/2779643970:uin/2779643970");
-        writeIdList.add("uin/2779643970:uin/151453739");
-        putObjectRequest.setXCOSGrantWriteWithUIN(writeIdList);
-
-        qServiceCfg.cosXmlService.putObjectAsync(putObjectRequest, new CosXmlResultListener() {
-            @Override
-            public void onSuccess(CosXmlRequest request, CosXmlResult result) {
-                Log.w("XIAO","success =" + result.printHeaders() + "|" + result.printBody());
-                Log.w("XIAO","accessUrl =" + result.accessUrl);
-            }
-
-            @Override
-            public void onFail(CosXmlRequest request, CosXmlResult result) {
-                Log.w("XIAO","failed =" + result.printHeaders() + "|" + result.printError());
-            }
-        });
-
-    }
-
 }

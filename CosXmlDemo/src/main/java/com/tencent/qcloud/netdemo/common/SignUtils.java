@@ -318,25 +318,4 @@ public class SignUtils {
         return signature;
     }
 
-
-    //解析 Authorization
-    /**
-     * compute authorization for users in SDK
-     * need: time for sign
-     * need: secretId
-     * need: time for secretKey and signKey
-     * need: true or false for queryParameters
-     * need: true or false for requestHead
-     */
-    protected String signKey;
-
-    public void setSignKey(String signKey, long starTime, long endTime){
-        this.signKey = signKey;
-        this.qKeyTime = starTime + ";" + endTime;
-    }
-
-    public void setSecretID(String secretID){
-
-    }
-
 }

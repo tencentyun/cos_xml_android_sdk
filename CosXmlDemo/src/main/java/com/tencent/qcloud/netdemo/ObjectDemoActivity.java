@@ -122,7 +122,8 @@ public class ObjectDemoActivity extends AppCompatActivity implements View.OnClic
         if(id == R.id.back){
             finish();
         }else{
-            start(id);
+            //start(id);
+            startAsync(id);
         }
     }
 
@@ -208,6 +209,66 @@ public class ObjectDemoActivity extends AppCompatActivity implements View.OnClic
                 }
             }
         }).start();
+    }
+    private void startAsync(int id){
+        switch (id) {
+            case R.id.appendObject:
+                AppendObjectSample appendObjectSample = new AppendObjectSample(qServiceCfg);
+                appendObjectSample.startAsync(this);
+                break;
+            case R.id.getObject:
+                GetObjectSample getObjectSample = new GetObjectSample(qServiceCfg);
+                getObjectSample.startAsync(this);
+                break;
+            case R.id.getObjectACL:
+                GetObjectACLSample getObjectACLSample = new GetObjectACLSample(qServiceCfg);
+                getObjectACLSample.startAsync(this);
+                break;
+            case R.id.putObject:
+                PutObjectSample putObjectSample = new PutObjectSample(qServiceCfg);
+                putObjectSample.startAsync(this);
+                break;
+            case R.id.putObjectACL:
+                PutObjectACLSample putObjectACLSample = new PutObjectACLSample(qServiceCfg);
+                putObjectACLSample.startAsync(this);
+                break;
+            case R.id.deleteObject:
+                DeleteObjectSample deleteObjectSample = new DeleteObjectSample(qServiceCfg);
+                deleteObjectSample.startAsync(this);
+                break;
+            case R.id.deleteMultipleObject:
+                DeleteMultiObjectSample deleteMultiObjectSample = new DeleteMultiObjectSample(qServiceCfg);
+                deleteMultiObjectSample.startAsync(this);
+                break;
+            case R.id.headObject:
+                HeadObjectSample headObjectSample = new HeadObjectSample(qServiceCfg);
+                headObjectSample.startAsync(this);
+                break;
+            case R.id.optionsObject:
+                OptionObjectSample optionObjectSample = new OptionObjectSample(qServiceCfg);
+                optionObjectSample.startAsync(this);
+                break;
+            case R.id.initiateMultipartUpload:
+                InitMultipartUploadSample initMultipartUploadSample = new InitMultipartUploadSample(qServiceCfg);
+                initMultipartUploadSample.startAsync(this);
+                break;
+            case R.id.uploadPart:
+                UploadPartSample uploadPartSample = new UploadPartSample(qServiceCfg);
+                uploadPartSample.startAsync(this);
+                break;
+            case R.id.listParts:
+                ListPartsSample listPartsSample = new ListPartsSample(qServiceCfg);
+                listPartsSample.startAsync(this);
+                break;
+            case R.id.completeMultipartUpload:
+                CompleteMultiUploadSample completeMultiUploadSample = new CompleteMultiUploadSample(qServiceCfg);
+                completeMultiUploadSample.startAsync(this);
+                break;
+            case R.id.abortMultipartUpload:
+                AbortMultiUploadSample abortMultiUploadSample = new AbortMultiUploadSample(qServiceCfg);
+                abortMultiUploadSample.startAsync(this);
+                break;
+        }
     }
 
 }
