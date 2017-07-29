@@ -21,13 +21,19 @@
 在build.gradle中，添加如下依赖:
 
 dependencies { 
+
 compile 'com.tencent.cos:cosxml:1+@aar'
+
 compile 'com.squareup.okhttp3:okhttp:3.8.1'
+
 compile 'org.slf4j:slf4j-android:1.6.1-RC1'
+
 compile ('com.thoughtworks.xstream:xstream:1.4.7') {
 exclude group: 'xmlpull', module: 'xmlpull'
 }
+
 compile 'com.alibaba:fastjson:latest.release'
+
 }
 
 **更多示例可参考Demo**
