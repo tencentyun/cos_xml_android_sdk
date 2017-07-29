@@ -33,16 +33,16 @@ import javax.crypto.spec.SecretKeySpec;
  * author bradyxiao
  */
 public class QServiceCfg {
-    public String bucket = "xy2";
-    public String appid = "1251668577";
-    public String region = "cn-south";
+    public String bucket = "bucket 名称";
+    public String appid = "appid";
+    public String region = "bucket所属地域";
     public CosXmlService cosXmlService;
 
     public QServiceCfg(Context context){
         CosXmlServiceConfig cosXmlServiceConfig = new CosXmlServiceConfig(appid,region);
         cosXmlServiceConfig.setSocketTimeout(450000);
         cosXmlService = new CosXmlService(context,cosXmlServiceConfig,
-                new MyCredentialProvider("AKIDrbAYjEBqqdEconpFi8NPFsOjrnX4LYUE","gCYjhT4ThiXAbp4aw65sTs56vY2Kcooc",600));
+                new MyCredentialProvider("输入secretId","输入secretkey",600));
     }
 
     /***
