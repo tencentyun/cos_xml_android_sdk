@@ -364,6 +364,7 @@ public class CosXmlLocalCredentialProvider extends CosXmlCredentialProvider{
 
 #### 返回结果说明
 通过 PutObjectResult 对象的成员变量返回请求结果。
+
 | 成员变量名称 | 类型     | 变量说明    |
 | :---- | :-------------- | :-- | :----------- |
 | error  | COSXMLError             | [请求失败的返回结果](https://www.qcloud.com/document/product/436/7730)     |
@@ -462,6 +463,7 @@ cosXmlService.putObjectAsync(putObjectRequest, new CosXmlResultListener() {
 
 #### 返回结果说明
 通过 InitMultipartUploadResult 对象的成员变量返回请求结果。
+
 | 成员变量名称 | 类型     | 变量说明    |
 | :---- | :-------------- | :-- | :----------- |
 | error  | COSXMLError             | [请求失败的返回结果](https://www.qcloud.com/document/product/436/7730)     |
@@ -557,6 +559,7 @@ cosXmlService.initMultipartUploadAsync(initMultipartUploadRequest, new CosXmlRes
 
 #### 返回结果说明
 通过 UploadPartResult 对象的成员变量返回请求结果。
+
 | 成员变量名称 | 类型     | 变量说明    |
 | :---- | :-------------- | :-- | :----------- |
 | error  | COSXMLError             | [请求失败的返回结果](https://www.qcloud.com/document/product/436/7730)     |
@@ -658,6 +661,7 @@ cosXmlService.uploadPartAsync(uploadPartRequest, new CosXmlResultListener() {
 
 #### 返回结果说明
 通过 CompleteMultiUploadResult 对象的成员变量返回请求结果。
+
 | 成员变量名称 | 类型     | 变量说明    |
 | :---- | :-------------- | :-- | :----------- |
 | error  | COSXMLError             | [请求失败的返回结果](https://www.qcloud.com/document/product/436/7730)     |
@@ -749,6 +753,7 @@ cosXmlService.completeMultiUploadAsync(completeMultiUploadRequest, new CosXmlRes
 
 #### 返回结果说明
 通过 ListPartsResult 对象的成员变量返回请求结果。
+
 | 成员变量名称 | 类型     | 变量说明    |
 | :---- | :-------------- | :-- | :----------- |
 | error  | COSXMLError             | [请求失败的返回结果](https://www.qcloud.com/document/product/436/7730)     |
@@ -838,6 +843,7 @@ cosXmlService.listPartsAsync(listPartsRequest, new CosXmlResultListener() {
 
 #### 返回结果说明
 通过 AbortMultiUploadResult 对象的成员变量返回请求结果。
+
 | 成员变量名称 | 类型     | 变量说明    |
 | :---- | :-------------- | :-- | :----------- |
 | error  | COSXMLError             | [请求失败的返回结果](https://www.qcloud.com/document/product/436/7730)     |
@@ -929,6 +935,7 @@ cosXmlService.abortMultiUploadAsync(abortMultiUploadRequest, new CosXmlResultLis
 
 #### 返回结果说明
 通过 DeleteObjectResult 对象的成员变量返回请求结果。
+
 | 成员变量名称 | 类型     | 变量说明    |
 | :---- | :-------------- | :-- | :----------- |
 | error  | COSXMLError             | [请求失败的返回结果](https://www.qcloud.com/document/product/436/7730)     |
@@ -1017,6 +1024,7 @@ cosXmlService.deleteObjectAsync(deleteObjectRequest, new CosXmlResultListener() 
 
 #### 返回结果说明
 通过 DeleteMultiObjectResult 对象的成员变量返回请求结果。
+
 | 成员变量名称 | 类型     | 变量说明    |
 | :---- | :-------------- | :-- | :----------- |
 | error  | COSXMLError             | [请求失败的返回结果](https://www.qcloud.com/document/product/436/7730)     |
@@ -1110,6 +1118,7 @@ cosXmlService.deleteMultiObjectAsync(DeleteMultiObjectResult, new CosXmlResultLi
 
 #### 返回结果说明
 通过 GetObjectResult 对象的成员变量返回请求结果。
+
 | 成员变量名称 | 类型     | 变量说明    |
 | :---- | :-------------- | :-- | :----------- |
 | error  | COSXMLError             | [请求失败的返回结果](https://www.qcloud.com/document/product/436/7730)     |
