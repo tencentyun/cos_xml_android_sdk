@@ -728,6 +728,185 @@ cosXmlService.completeMultiUploadAsync(completeMultiUploadRequest, new CosXmlRes
 */
 ````
 
+### 列举已上传的分片
+
+调用此接口用来查询特定分块上传中的已上传的块，即罗列出指定 UploadId 所属的所有已上传成功的分块.
+1. 调用 ListPartsRequest（）构造方法，实例化 ListPartsRequest 对象.
+2. 调用 CosXmlService 的 listParts 方法，传入 ListPartsRequest，返回 ListPartsResult 对象.
+   （或者 调用 listPartsAsync 方法，传入 ListPartsRequest 和 CosXmlResultListener 进行异步回调操作）.
+
+#### 参数说明
+| 参数名称   | 类型 | 是否必填 | 参数描述   |
+| :-------- | :--------------- | :-- | :----------- |
+| bucket    | String           | 是  |存储桶名称   |
+| cosPath   | String           | 是  |远端路径，即存储到cos上的绝对路径   |
+| uploadId    | String           | 是  |初始化分片上传，返回的uploadId   |
+| signDuration    | long           | 是  | 签名的有效期，单位为秒   |
+| checkHeaderListForSign    | Set<String>           | 否  | 签名中需要验证的请求头    |
+| checkParameterListForSing   | Set<String>           | 否  | 签名中需要验证的请求参数      |
+| cosXmlResultListener   | CosXmlResultListener          | 否  | 上传结果回调     |
+
+
+#### 返回结果说明
+通过 ListPartsResult 对象的成员变量返回请求结果。
+| 成员变量名称 | 类型     | 变量说明    |
+| :---- | :-------------- | :-- | :----------- |
+| error  | COSXMLError             | [请求失败的返回结果](https://www.qcloud.com/document/product/436/7730)     |
+| listParts  | ListParts             | [请求成功返回的结果](https://www.qcloud.com/document/product/436/7747)     |
+
+
+#### 示例
+````java
+ListPartsRequest listPartsRequest = new ListPartsRequest();
+listPartsRequest.setBucket(bucket);
+listPartsRequest.setCosPath(cosPath);
+listPartsRequest.setUploadId(uploadId);
+listPartsRequest.setSign(signDuration,null,null);
+
+//使用同步方法请求
+try {
+    ListPartsResult listPartsResult = cosXmlService.listParts(listPartsRequest);
+	
+	//请求失败， 返回httpCode 不在【200，300）之内；
+	if(listPartsResult.getHttpCode() >= 300 || listPartsResult.getHttpCode() < 200){
+		StringBuilder stringBuilder = new StringBuilder("Error\n");
+		stringBuilder.append(listPartsResult.error.code)
+				.append(listPartsResult.error.message)
+				.append(listPartsResult.error.resource)
+				.append(listPartsResult.error.requestId)
+				.append(listPartsResult.error.traceId);
+		Log.w("TEST",stringBuilder.toString());
+	}
+
+	//请求成功
+	if(listPartsResult.getHttpCode() >= 200 && listPartsResult.getHttpCode() < 300){
+		
+		Log.w("TEST","请求成功  " + listPartsResult.listParts.toString());
+	}
+       
+
+  } catch (QCloudException e) {
+
+	   //抛出异常
+       Log.w("TEST","exception =" + e.getExceptionType() + "; " + e.getDetailMessage());
+}
+
+
+//**使用异步回调请求**
+/**
+
+cosXmlService.listPartsAsync(listPartsRequest, new CosXmlResultListener() {
+     @Override
+     public void onSuccess(CosXmlRequest request, CosXmlResult result) {
+
+		Log.w("TEST","请求成功 " + listPartsResult.listParts.toString());
+     }
+
+     @Override
+     public void onFail(CosXmlRequest request, CosXmlResult result) {
+         StringBuilder stringBuilder = new StringBuilder("Error\n");
+		 stringBuilder.append(result.error.code)
+				.append(result.error.message)
+				.append(result.error.resource)
+				.append(result.error.requestId)
+				.append(result.error.traceId);
+		Log.w("TEST",stringBuilder.toString());
+    }
+});
+
+*/
+````
+
+
+### 舍弃并删除已上传的分片
+调用此接口用来用来实现舍弃一个分块上传并删除已上传的块.
+1. 调用 AbortMultiUploadRequest（）构造方法，实例化 AbortMultiUploadRequest 对象.
+2. 调用 CosXmlService 的 abortMultiUpload 方法，传入 AbortMultiUploadRequest，返回 AbortMultiUploadResult 对象.
+   （或者 调用 abortMultiUploadAsync 方法，传入 AbortMultiUploadRequest 和 CosXmlResultListener 进行异步回调操作）.
+
+#### 参数说明
+| 参数名称   | 类型 | 是否必填 | 参数描述   |
+| :-------- | :--------------- | :-- | :----------- |
+| bucket    | String           | 是  |存储桶名称   |
+| cosPath   | String           | 是  |远端路径，即存储到cos上的绝对路径   |
+| uploadId    | String           | 是  |初始化分片上传，返回的uploadId   |
+| signDuration    | long           | 是  | 签名的有效期，单位为秒   |
+| checkHeaderListForSign    | Set<String>           | 否  | 签名中需要验证的请求头    |
+| checkParameterListForSing   | Set<String>           | 否  | 签名中需要验证的请求参数      |
+| cosXmlResultListener   | CosXmlResultListener          | 否  | 上传结果回调     |
+
+
+#### 返回结果说明
+通过 AbortMultiUploadResult 对象的成员变量返回请求结果。
+| 成员变量名称 | 类型     | 变量说明    |
+| :---- | :-------------- | :-- | :----------- |
+| error  | COSXMLError             | [请求失败的返回结果](https://www.qcloud.com/document/product/436/7730)     |
+| httpCode  | int             | [请求成功返回的结果](https://www.qcloud.com/document/product/436/7740)     |
+
+
+#### 示例
+````java
+AbortMultiUploadRequest abortMultiUploadRequest = new AbortMultiUploadRequest();
+abortMultiUploadRequest.setBucket(bucket);
+abortMultiUploadRequest.setCosPath(cosPath);
+abortMultiUploadRequest.setUploadId(uploadId);
+abortMultiUploadRequest.setSign(signDuration,null,null);
+
+//使用同步方法请求
+try {
+    AbortMultiUploadResult abortMultiUploadResult = cosXmlService.abortMultiUpload(abortMultiUploadRequest);
+	
+	//请求失败， 返回httpCode 不在【200，300）之内；
+	if(abortMultiUploadResult.getHttpCode() >= 300 || abortMultiUploadResult.getHttpCode() < 200){
+		StringBuilder stringBuilder = new StringBuilder("Error\n");
+		stringBuilder.append(abortMultiUploadResult.error.code)
+				.append(abortMultiUploadResult.error.message)
+				.append(abortMultiUploadResult.error.resource)
+				.append(abortMultiUploadResult.error.requestId)
+				.append(abortMultiUploadResult.error.traceId);
+		Log.w("TEST",stringBuilder.toString());
+	}
+
+	//请求成功
+	if(abortMultiUploadResult.getHttpCode() >= 200 && abortMultiUploadResult.getHttpCode() < 300){
+		
+		Log.w("TEST","请求成功  ");
+	}
+       
+
+  } catch (QCloudException e) {
+
+	   //抛出异常
+       Log.w("TEST","exception =" + e.getExceptionType() + "; " + e.getDetailMessage());
+}
+
+
+//**使用异步回调请求**
+/**
+
+cosXmlService.abortMultiUploadAsync(abortMultiUploadRequest, new CosXmlResultListener() {
+     @Override
+     public void onSuccess(CosXmlRequest request, CosXmlResult result) {
+
+		Log.w("TEST","请求成功 ");
+     }
+
+     @Override
+     public void onFail(CosXmlRequest request, CosXmlResult result) {
+         StringBuilder stringBuilder = new StringBuilder("Error\n");
+		 stringBuilder.append(result.error.code)
+				.append(result.error.message)
+				.append(result.error.resource)
+				.append(result.error.requestId)
+				.append(result.error.traceId);
+		Log.w("TEST",stringBuilder.toString());
+    }
+});
+
+*/
+````
+
+
 ## 删除文件
 
 ### 删除单个文件
