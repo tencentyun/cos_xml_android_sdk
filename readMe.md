@@ -38,7 +38,23 @@ compile 'com.alibaba:fastjson:latest.release'
 
 **更多示例可参考Demo**
 
-**常用的API接口：**
+**常用的类**
+
+//签名获取类
+
+CosXmlCredentialProvider.
+
+//sdk配置设置类
+
+CosXmlServiceConfig.
+
+//cos 服务类
+
+CosXmlService.
+
+
+**CosXmlService 常用的API接口：**
+
 
 //简单上传文件
 

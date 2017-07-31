@@ -51,6 +51,16 @@ SDK 需要网络访问相关的一些权限，需要在 AndroidManifest.xml 中�
 | appid           | String          | 是  | 对象存储 的服务APPID |
 | region          | String          | 是  | 存储桶 所在的地域 |
 
+
+#### 其它配置设置方法
+|   方法   |     方法描述   |
+|:----------:|:-----------:|
+|   setHttpProtocol(boolean)  | true: https请求； false: http请求； 默认http请求|
+|   setConnectionTimeout(int) |     连接超时设置   |
+|  setSocketTimeout(int)   |     读写超时设置   |
+|   setMaxRetryCount(int)  |     失败请求重试次数   |
+
+
 #### 示例
 ````java
 String appid = "对象存储 的服务APPID";
