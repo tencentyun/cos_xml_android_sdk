@@ -143,3 +143,9 @@ void headObjectAsync(HeadObjectRequest request, final CosXmlResultListener cosXm
 
 
 
+## Change Log
+
+#### **cos-xml-android-sdk-1.1.jar**
+- 增加CAM鉴权接口
+
+
