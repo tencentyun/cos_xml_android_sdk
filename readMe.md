@@ -1,9 +1,9 @@
 **COS XML ANDROID SDK 导入的第一种方式：**
 
 工程中导入下列 jar 包：
-- cos-xml-android-sdk-1.0.jar
+- cos-xml-android-sdk-1.1.jar
 
-- qcloud-network-android-sdk-1.0.jar
+- qcloud-network-android-sdk-1.1.jar
  
 - okhttp-3.8.1.jar
 
@@ -13,36 +13,34 @@
 
 - xstream-1.4.7.jar
 
-- fastjson-1.1.60.android.jar
-
 
 **COS XML ANDROID SDK 导入的第二种方式：**
 
 在build.gradle中，添加如下依赖:
 
+```
+
 dependencies { 
 
-compile 'com.tencent.cos:cosxml:1+@aar'
-
-compile 'com.squareup.okhttp3:okhttp:3.8.1'
-
-compile 'org.slf4j:slf4j-android:1.6.1-RC1'
-
-compile ('com.thoughtworks.xstream:xstream:1.4.7') {
-exclude group: 'xmlpull', module: 'xmlpull'
-}
-
-compile 'com.alibaba:fastjson:latest.release'
+	compile 'com.tencent.cos:cosxml:1+@aar'
+	compile 'com.tencent.qcloud:network:1.1'
+	compile 'com.squareup.okhttp3:okhttp:3.8.1'
+	compile 'org.slf4j:slf4j-android:1.6.1-RC1'
+	compile ('com.thoughtworks.xstream:xstream:1.4.7') {
+	exclude group: 'xmlpull', module: 'xmlpull'
+	}
 
 }
-
+```
 **更多示例可参考Demo**
 
 **常用的类**
+
 ```
 //签名获取类
 
 CosXmlCredentialProvider.
+SmartSessionCredentialProvider
 
 //sdk配置设置类
 
@@ -146,6 +144,6 @@ void headObjectAsync(HeadObjectRequest request, final CosXmlResultListener cosXm
 ## Change Log
 
 #### **cos-xml-android-sdk-1.1.jar**
-- 增加CAM鉴权接口
+- 增加CAM鉴权接口 SmartSessionCredentialProvider
 
 
