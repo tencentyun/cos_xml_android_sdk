@@ -1,3 +1,6 @@
+## 仓库已弃用
+新版 SDK 已迁移到 [cos-xml-sdk](https://github.com/tencentyun/qcloud-sdk-android)。
+
 **COS XML ANDROID SDK 导入的第一种方式：**
 
 工程中导入下列 jar 包：
